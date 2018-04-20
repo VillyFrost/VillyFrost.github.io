@@ -1,0 +1,19 @@
+<form class="example-form">
+  <input type="file" name="file" id="file" (change)="uploadImage($event)" >
+  <div [hidden]="!uploadePercent">
+    <mat-progress-bar mode="determinate" value="{{uploadePercent | async}}"></mat-progress-bar>
+  </div>
+  <div [hidden]="!image">
+    <img [src]="image || '//:0'" style="width: 100%">
+  </div>
+  <mat-form-field class="example-full-width">
+    <input type="text" matInput placeholder="title" [(ngModel)]="title" name="title">
+  </mat-form-field>
+  <br>
+  <mat-form-field class="example-full-width">
+    <textarea type="text" matInput placeholder="Leave a comment" [(ngModel)]="content" name="content" rows="10"></textarea>
+  </mat-form-field>
+  <br>
+
+  <button mat-raised-button color="primary" (click)="createPost()" [disabled]="!title || !content">{{textButtom}}</button>
+</form>
